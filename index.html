@@ -38,15 +38,10 @@
       border-left: 4px solid #0033ff;
       padding-left: 20px;
       margin-top: 40px;
-    }
-
-    #typewriter {
       white-space: pre-wrap;
       border-right: 2px solid #0033ff;
       animation: blink 0.7s infinite step-end;
-      font-size: 2.8rem;
-      line-height: 1.7;
-      min-height: 200px;
+      min-height: 100px;
     }
 
     @keyframes blink {
@@ -59,15 +54,13 @@
         padding: 60px 30px;
       }
 
-      #typewriter {
+      .quote {
         font-size: 2rem;
       }
     }
   </style>
 </head>
 <body>
-
-  <div id="typewriter"></div>
 
   <div class="section">
     Hello. I’m Neol.<br>
@@ -131,9 +124,7 @@
     Movie – <a href="https://www.primevideo.com/detail/Inside-Llewyn-Davis/0MW3B0FYFVGDFI3DNHOXJ6KA0S" target="_blank">Inside Llewyn Davis</a>
   </div>
 
-  <div class="quote">
-    “Don’t wait for the perfect moment, take the moment and make it perfect.”
-  </div>
+  <div class="quote" id="quote"></div>
 
   <div class="section">
     That’s it<br>
@@ -142,40 +133,33 @@
   </div>
 
   <script>
-    const el = document.getElementById("typewriter");
-    const initial = "just trying to move differen";
-    const mistake = "—";
-    const correct = "different while most people sleep on the bigger picture.";
+    const quoteEl = document.getElementById("quote");
+    const quoteText = "“Don’t wait for the perfect moment, take the moment and make it perfect.”";
     let i = 0;
+    let hasTyped = false;
 
-    function typeInitial() {
-      if (i < initial.length) {
-        el.textContent += initial[i];
+    function typeQuote() {
+      if (i < quoteText.length) {
+        quoteEl.textContent += quoteText[i];
         i++;
-        setTimeout(typeInitial, 80);
-      } else {
-        setTimeout(() => {
-          el.textContent += mistake;
-          setTimeout(() => backspaceMistake(), 400);
-        }, 200);
+        setTimeout(typeQuote, 100); // slower typing speed
       }
     }
 
-    function backspaceMistake() {
-      el.textContent = el.textContent.slice(0, -1); // remove dash
-      setTimeout(() => typeCorrected(), 300);
+    function isInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+      );
     }
 
-    let j = 0;
-    function typeCorrected() {
-      if (j < correct.length) {
-        el.textContent += correct[j];
-        j++;
-        setTimeout(typeCorrected, 65);
+    window.addEventListener('scroll', () => {
+      if (!hasTyped && isInViewport(quoteEl)) {
+        hasTyped = true;
+        typeQuote();
       }
-    }
-
-    window.onload = () => typeInitial();
+    });
   </script>
 
 </body>
