@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>neol</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;400&display=swap');
+
     body {
       background-color: #fff;
-      font-family: 'Arial Black', Gadget, sans-serif;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      font-weight: 200;
       color: #0033ff;
-      font-size: 2.8rem;
+      font-size: 2.6rem;
       line-height: 1.7;
       margin: 0;
       padding: 80px 40px;
       text-align: left;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
+      overflow-x: hidden;
     }
 
     a {
@@ -30,132 +35,116 @@
 
     .section {
       margin-bottom: 80px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+      will-change: opacity, transform;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .quote {
       font-style: italic;
       color: #222;
       border-left: 4px solid #0033ff;
+      border-right: 2px solid #0033ff;
       padding-left: 20px;
       margin-top: 40px;
       white-space: pre-wrap;
-      border-right: 2px solid #0033ff;
-      animation: blink 0.7s infinite step-end;
+      font-size: 2.2rem;
       min-height: 100px;
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent; }
     }
 
     @media (max-width: 768px) {
       body {
         font-size: 2rem;
-        padding: 60px 30px;
+        padding: 50px 25px;
       }
 
       .quote {
-        font-size: 2rem;
+        font-size: 1.8rem;
+      }
+
+      .section {
+        margin-bottom: 60px;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="section">
-    Hello. I’m Neol.<br>
-    Seventeen.<br>
-    Not in college yet.<br>
-    Just trying to move different while most people are still asleep to the bigger picture.
-  </div>
+  <div class="section">hello. i’m neol.<br>seventeen.<br>not in college yet.<br>just trying to move different while most people are still asleep to the bigger picture.</div>
+
+  <div class="section">i’m working on my body<br>not for looks<br>but because it sharpens me<br>keeps my mind from drifting<br>makes the mirror feel honest</div>
+
+  <div class="section">my days are mostly quiet<br>some people think that’s a mystery thing<br>it’s not<br>i just don’t like saying things that don’t matter</div>
+
+  <div class="section">i’m building something<br>not rushing it<br>but it’s there<br>in the background, moving<br>one decision at a time</div>
+
+  <div class="section">she’s in the picture too<br>not loud, not public<br>but steady<br>she gets the version of me no one else really earns</div>
 
   <div class="section">
-    I’m working on my body<br>
-    Not for looks<br>
-    But because it sharpens me<br>
-    Keeps my mind from drifting<br>
-    Makes the mirror feel honest
+    some things i stand by:<br>
+    – stop explaining yourself<br>
+    – the right people already get it<br>
+    – don’t chase aesthetics. become undeniable through consistency<br>
+    – you don’t need more clothes. or more opinions. or more noise<br>
+    – clarity comes in silence
   </div>
 
-  <div class="section">
-    My days are mostly quiet<br>
-    Some people think that’s a mystery thing<br>
-    It’s not<br>
-    I just don’t like saying things that don’t matter
-  </div>
+  <div class="section">this year’s about refining<br>cutting the excess<br>thinking sharper<br>moving smarter</div>
 
   <div class="section">
-    I’m building something<br>
-    Not rushing it<br>
-    But it’s there<br>
-    In the background, moving<br>
-    One decision at a time
-  </div>
-
-  <div class="section">
-    She’s in the picture too<br>
-    Not loud, not public<br>
-    But steady<br>
-    She gets the version of me no one else really earns
-  </div>
-
-  <div class="section">
-    Some things I stand by:<br>
-    – Stop explaining yourself<br>
-    – The right people already get it<br>
-    – Don’t chase aesthetics. Become undeniable through consistency<br>
-    – You don’t need more clothes. Or more opinions. Or more noise<br>
-    – Clarity comes in silence
-  </div>
-
-  <div class="section">
-    This year’s about refining<br>
-    Cutting the excess<br>
-    Thinking sharper<br>
-    Moving smarter
-  </div>
-
-  <div class="section">
-    Monthly picks:<br>
-    Article – <a href="https://medium.com/@yentqing/i-cannot-be-content-222e6b83b0f1" target="_blank">I Cannot Be Content</a><br>
-    Video – Jiro Dreams of Sushi<br>
-    Album – <a href="https://music.apple.com/us/album/torches/435761204" target="_blank">Foster the People – Torches</a><br>
-    Book – Meditations by Marcus Aurelius<br>
-    Movie – <a href="https://www.primevideo.com/detail/Inside-Llewyn-Davis/0MW3B0FYFVGDFI3DNHOXJ6KA0S" target="_blank">Inside Llewyn Davis</a>
+    monthly picks:<br>
+    article – <a href="https://medium.com/@yentqing/i-cannot-be-content-222e6b83b0f1" target="_blank">i cannot be content</a><br>
+    video – jiro dreams of sushi<br>
+    album – <a href="https://music.apple.com/us/album/torches/435761204" target="_blank">foster the people – torches</a><br>
+    book – meditations by marcus aurelius<br>
+    movie – <a href="https://www.primevideo.com/detail/Inside-Llewyn-Davis/0MW3B0FYFVGDFI3DNHOXJ6KA0S" target="_blank">inside llewyn davis</a>
   </div>
 
   <div class="quote" id="quote"></div>
 
-  
-  <div class="section">
-    That’s it<br>
-    Might update this again<br>
-    Might not
-  </div>
+  <div class="section">that’s it<br>might update this again<br>might not</div>
 
   <script>
+    const sections = document.querySelectorAll('.section');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    sections.forEach(section => observer.observe(section));
+
+    // Typewriter effect
     const quoteEl = document.getElementById("quote");
-    const quoteText = "“Don’t wait for the perfect moment, take the moment and make it perfect.”";
-    let i = 0;
+    const quoteText = "“don’t wait for the perfect moment, take the moment and make it perfect.”";
+    let idx = 0;
     let hasTyped = false;
 
     function typeQuote() {
-      if (i < quoteText.length) {
-        quoteEl.textContent += quoteText[i];
-        i++;
-        setTimeout(typeQuote, 100); // slower typing speed
+      if (idx < quoteText.length) {
+        quoteEl.textContent += quoteText[idx++];
+        setTimeout(typeQuote, 70);
       }
     }
 
     function isInViewport(el) {
       const rect = el.getBoundingClientRect();
       return (
-        rect.top >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+        rect.top < window.innerHeight &&
+        rect.bottom > 0
       );
     }
 
-    window.addEventListener('scroll', () => {
+    window.addEventListener("scroll", () => {
       if (!hasTyped && isInViewport(quoteEl)) {
         hasTyped = true;
         typeQuote();
