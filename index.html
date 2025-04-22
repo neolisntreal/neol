@@ -4,54 +4,142 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>neol</title>
+
   <style>
     @font-face {
-      font-family: 'FranklinGothicCustom';
-      src: url('FranklinGothicLT-Demi.woff2') format('woff2'),
-           url('FranklinGothicLT-Demi.woff') format('woff');
-      font-weight: normal;
+      font-family: 'FranklinCustom';
+      src: url('fonts/ITCFranklinGothicLTPro-Demi.woff2') format('woff2'),
+           url('fonts/ITCFranklinGothicLTPro-Demi.woff') format('woff');
+      font-weight: 600;
       font-style: normal;
+      font-display: swap;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      width: 100%;
-      height: 100%;
-      background: #ffffff;
-      font-family: 'FranklinGothicCustom', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .text {
-      font-size: 6rem; /* BIG AS HELL */
-      font-weight: bold;
+    body {
+      background-color: #fff;
+      font-family: 'FranklinCustom', sans-serif;
+      font-weight: 600;
       color: #0033ff;
-      line-height: 1.2;
-      letter-spacing: 0.8px;
-      text-align: center;
-      animation: fadeUp 1.2s ease-out forwards;
+      font-size: 3.2rem;
+      line-height: 1.7;
+      margin: 0;
+      padding: 80px 40px;
+      text-align: left;
+      letter-spacing: 0.2px;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: #0033ff;
+      text-decoration: underline;
+      cursor: pointer;
+      transition: filter 0.4s ease, color 0.4s ease;
+    }
+
+    a:hover {
+      color: #000;
+      filter: grayscale(100%) brightness(80%);
+    }
+
+    .section {
+      margin-bottom: 80px;
       opacity: 0;
       transform: translateY(40px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+      will-change: opacity, transform;
     }
 
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .quote {
+      font-style: italic;
+      color: #222;
+      border-left: 4px solid #0033ff;
+      border-right: 2px solid #0033ff;
+      padding-left: 20px;
+      margin-top: 40px;
+      white-space: pre-wrap;
+      font-size: 2.8rem;
+      min-height: 100px;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        font-size: 2.2rem;
+        padding: 50px 25px;
+      }
+
+      .quote {
+        font-size: 2rem;
+      }
+
+      .section {
+        margin-bottom: 60px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="text">
-    in case i vanish
+
+  <div class="section">hello. i’m neol.<br>seventeen.<br>not in college yet.<br>just trying to move different while most people are still asleep to the bigger picture.</div>
+
+  <div class="section">i’m working on my body<br>not for looks<br>but because it sharpens me<br>keeps my mind from drifting<br>makes the mirror feel honest</div>
+
+  <div class="section">my days are mostly quiet<br>some people think that’s a mystery thing<br>it’s not<br>i just don’t like saying things that don’t matter</div>
+
+  <div class="section">i’m building something<br>not rushing it<br>but it’s there<br>in the background, moving<br>one decision at a time</div>
+
+  <div class="section">she’s in the picture too<br>not loud, not public<br>but steady<br>she gets the version of me no one else really earns</div>
+
+  <div class="section">
+    some things i stand by:<br>
+    – stop explaining yourself<br>
+    – the right people already get it<br>
+    – don’t chase aesthetics. become undeniable through consistency<br>
+    – you don’t need more clothes. or more opinions. or more noise<br>
+    – clarity comes in silence
   </div>
+
+  <div class="section">this year’s about refining<br>cutting the excess<br>thinking sharper<br>moving smarter</div>
+
+  <div class="section">
+    monthly picks:<br>
+    article – <a href="https://medium.com/@yentqing/i-cannot-be-content-222e6b83b0f1" target="_blank">i cannot be content</a><br>
+    video – jiro dreams of sushi<br>
+    album – <a href="https://music.apple.com/us/album/torches/435761204" target="_blank">foster the people – torches</a><br>
+    book – meditations by marcus aurelius<br>
+    movie – <a href="https://www.primevideo.com/detail/Inside-Llewyn-Davis/0MW3B0FYFVGDFI3DNHOXJ6KA0S" target="_blank">inside llewyn davis</a>
+  </div>
+
+  <div class="quote" id="quote"></div>
+
+  <div class="section">that’s it<br>might update this again<br>might not</div>
+
+  <script>
+    window.onload = () => {
+      // Show all sections at once
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.add('visible');
+      });
+
+      // Typewriter for quote
+      const quoteEl = document.getElementById("quote");
+      const quoteText = "“don’t wait for the perfect moment, take the moment and make it perfect.”";
+      let idx = 0;
+
+      function typeQuote() {
+        if (idx < quoteText.length) {
+          quoteEl.textContent += quoteText[idx++];
+          setTimeout(typeQuote, 70);
+        }
+      }
+
+      typeQuote();
+    };
+  </script>
+
 </body>
 </html>
