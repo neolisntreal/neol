@@ -6,51 +6,51 @@
   <title>neol</title>
   <style>
     @font-face {
-      font-family: 'FranklinCustom';
+      font-family: 'FranklinGothicCustom';
       src: url('FranklinGothicLT-Demi.woff2') format('woff2'),
            url('FranklinGothicLT-Demi.woff') format('woff');
-      font-weight: 600;
+      font-weight: normal;
       font-style: normal;
     }
 
-    body {
-      background-color: #fff;
-      font-family: 'FranklinCustom', sans-serif;
-      font-weight: 600;
-      color: #0033ff;
-      font-size: 2.6rem;
-      line-height: 1.7;
+    * {
       margin: 0;
-      padding: 80px 40px;
-      text-align: left;
-      letter-spacing: 0.3px;
-      overflow-x: hidden;
-      opacity: 0;
-      transform: translateY(40px);
-      animation: fadeIn 1.2s ease-out forwards;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    @keyframes fadeIn {
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+      font-family: 'FranklinGothicCustom', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .text {
+      font-size: 6rem; /* BIG AS HELL */
+      font-weight: bold;
+      color: #0033ff;
+      line-height: 1.2;
+      letter-spacing: 0.8px;
+      text-align: center;
+      animation: fadeUp 1.2s ease-out forwards;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    @keyframes fadeUp {
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
-
-    a {
-      color: #0033ff;
-      text-decoration: underline;
-      cursor: pointer;
-      transition: filter 0.4s ease, color 0.4s ease;
-    }
-
-    a:hover {
-      color: #000;
-    }
   </style>
 </head>
 <body>
-  <div class="section">
+  <div class="text">
     in case i vanish
   </div>
 </body>
