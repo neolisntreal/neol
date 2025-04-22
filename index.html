@@ -32,12 +32,6 @@
       margin-bottom: 80px;
     }
 
-    .footer {
-      font-size: 1.2rem;
-      opacity: 0.4;
-      margin-top: 100px;
-    }
-
     .quote {
       font-style: italic;
       color: #222;
@@ -147,33 +141,41 @@
     Might not
   </div>
 
-  <div class="footer">
-    ty 4fsun
-  </div>
-
   <script>
     const el = document.getElementById("typewriter");
-    const text = "just trying to move differen—different* while most people sleep on the bigger picture.";
+    const initial = "just trying to move differen";
+    const mistake = "—";
+    const correct = "different while most people sleep on the bigger picture.";
     let i = 0;
-    let delay = 60;
 
-    function type() {
-      if (i < text.length) {
-        if (text[i] === "*") {
-          setTimeout(() => {
-            el.textContent = el.textContent.slice(0, -9);
-            i++;
-            type();
-          }, 400);
-        } else {
-          el.textContent += text[i];
-          i++;
-          setTimeout(type, delay);
-        }
+    function typeInitial() {
+      if (i < initial.length) {
+        el.textContent += initial[i];
+        i++;
+        setTimeout(typeInitial, 80);
+      } else {
+        setTimeout(() => {
+          el.textContent += mistake;
+          setTimeout(() => backspaceMistake(), 400);
+        }, 200);
       }
     }
 
-    window.onload = () => type();
+    function backspaceMistake() {
+      el.textContent = el.textContent.slice(0, -1); // remove dash
+      setTimeout(() => typeCorrected(), 300);
+    }
+
+    let j = 0;
+    function typeCorrected() {
+      if (j < correct.length) {
+        el.textContent += correct[j];
+        j++;
+        setTimeout(typeCorrected, 65);
+      }
+    }
+
+    window.onload = () => typeInitial();
   </script>
 
 </body>
