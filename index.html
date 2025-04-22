@@ -15,6 +15,10 @@
       font-display: swap;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background-color: #fff;
       font-family: 'DilemmaSansBoldXP', sans-serif;
@@ -23,8 +27,9 @@
       font-size: 3.2rem;
       letter-spacing: 0.4px;
       line-height: 1.7;
-      margin: 0;
+      margin: 0 auto;
       padding: 80px 40px;
+      max-width: 880px;
       text-align: left;
       overflow-x: hidden;
     }
@@ -45,7 +50,7 @@
       margin-bottom: 80px;
       opacity: 0;
       transform: translateY(40px);
-      transition: opacity 1s ease-out, transform 1s ease-out;
+      transition: opacity 1.2s ease, transform 1.2s ease;
       will-change: opacity, transform;
     }
 
@@ -61,6 +66,7 @@
       border-right: 2px solid #0033ff;
       padding-left: 20px;
       margin-top: 40px;
+      margin-bottom: 80px;
       white-space: pre-wrap;
       font-size: 2.6rem;
       min-height: 100px;
@@ -76,6 +82,7 @@
 
       .quote {
         font-size: 2rem;
+        margin-bottom: 60px;
       }
 
       .section {
@@ -121,7 +128,7 @@
   <div class="section">That’s it<br>Might update this again<br>Might not</div>
 
   <script>
-    const quoteText = "“Don’t wait for the perfect moment, take the moment and make it perfect.”";
+    const quoteText = "“I don’t need it to be easy, I need it to be worth it.”";
     const quoteEl = document.getElementById("quote");
     let quoteTyped = false;
 
@@ -133,21 +140,22 @@
           function typeQuote() {
             if (idx < quoteText.length) {
               quoteEl.textContent += quoteText[idx++];
-              setTimeout(typeQuote, 70);
+              setTimeout(typeQuote, 60);
             }
           }
           typeQuote();
         }
-      });
-    }, { threshold: 0.6 });
 
-    observer.observe(quoteEl);
-
-    window.onload = () => {
-      document.querySelectorAll('.section').forEach(section => {
-        section.classList.add('visible');
+        // Fade-in for other sections
+        if (entry.isIntersecting && entry.target.classList.contains("section")) {
+          entry.target.classList.add("visible");
+        }
       });
-    };
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.section, #quote').forEach(el => {
+      observer.observe(el);
+    });
   </script>
 
 </body>
