@@ -24,19 +24,29 @@
       font-family: 'DilemmaSansBoldXP', sans-serif;
       font-weight: 900;
       color: #0033ff;
-      font-size: 3.8rem; /* Adjusted to look big but not crazy */
+      font-size: 3.2rem; /* slightly smaller like video */
       letter-spacing: 0.2px;
       line-height: 1.6;
       margin: 0;
       padding: 100px 50px;
       text-align: left;
       overflow-x: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInAll 1.8s ease forwards;
+    }
+
+    @keyframes fadeInAll {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     a {
       color: #0033ff;
       text-decoration: underline;
-      font-size: 3.8rem;
+      font-size: 3.2rem;
       cursor: pointer;
       transition: filter 0.4s ease, color 0.4s ease;
     }
@@ -48,8 +58,6 @@
 
     .section {
       margin-bottom: 100px;
-      opacity: 1; /* Instantly visible */
-      transform: translateY(0); /* No animation */
     }
 
     .quote {
@@ -61,7 +69,7 @@
       margin-top: 40px;
       margin-bottom: 100px;
       white-space: pre-wrap;
-      font-size: 3.2rem;
+      font-size: 2.8rem;
       min-height: 100px;
       font-weight: 800;
       letter-spacing: 0.3px;
@@ -78,17 +86,17 @@
 
     @media (max-width: 768px) {
       body {
-        font-size: 2.4rem;
+        font-size: 2.1rem;
         padding: 60px 30px;
       }
 
       .quote {
-        font-size: 2.2rem;
+        font-size: 2.1rem;
         margin-bottom: 70px;
       }
 
       a {
-        font-size: 2.4rem;
+        font-size: 2.1rem;
       }
 
       .section {
@@ -122,41 +130,4 @@
 
   <div class="section">
     Monthly Picks:<br>
-    Article – <a href="https://medium.com/@yentqing/i-cannot-be-content-222e6b83b0f1" target="_blank">I Cannot Be Content</a><br>
-    Video – Jiro Dreams of Sushi<br>
-    Album – <a href="https://music.apple.com/us/album/torches/435761204" target="_blank">Foster The People – Torches</a><br>
-    Book – Meditations by Marcus Aurelius<br>
-    Movie – <a href="https://www.primevideo.com/detail/Inside-Llewyn-Davis/0MW3B0FYFVGDFI3DNHOXJ6KA0S" target="_blank">Inside Llewyn Davis</a>
-  </div>
-
-  <div class="quote" id="quote"></div>
-
-  <div class="section">That’s it<br>Might update this again<br>Might not</div>
-
-  <script>
-    const quoteText = "“I don’t need it to be easy, I need it to be worth it.”";
-    const quoteEl = document.getElementById("quote");
-    let quoteTyped = false;
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !quoteTyped && entry.target.id === "quote") {
-          quoteTyped = true;
-          entry.target.classList.add("visible");
-          let idx = 0;
-          function typeQuote() {
-            if (idx < quoteText.length) {
-              quoteEl.textContent += quoteText[idx++];
-              setTimeout(typeQuote, 60);
-            }
-          }
-          typeQuote();
-        }
-      });
-    }, { threshold: 0.3 });
-
-    observer.observe(quoteEl);
-  </script>
-
-</body>
-</html>
+    Article – <a href="https://medium.com/@yentqing/i-cannot-be-content-222e6b83b0f
