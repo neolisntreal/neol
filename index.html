@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>neol</title>
 
   <style>
     @font-face {
-      font-family: 'DilemmaSansBoldXP';
-      src: url('Dilemma-SansBoldXP.woff2') format('woff2'),
-           url('Dilemma-SansBoldXP.woff') format('woff');
+      font-family: 'dilemmasansboldxp';
+      src: url('dilemma-sansboldxp.woff2') format('woff2'),
+           url('dilemma-sansboldxp.woff') format('woff');
       font-weight: 900;
       font-style: normal;
       font-display: swap;
@@ -21,10 +21,10 @@
 
     body {
       background-color: #fff;
-      font-family: 'DilemmaSansBoldXP', sans-serif;
+      font-family: 'dilemmasansboldxp', sans-serif;
       font-weight: 900;
       color: #0033ff;
-      font-size: 3.2rem; /* slightly smaller like video */
+      font-size: 3.2rem;
       letter-spacing: 0.2px;
       line-height: 1.6;
       margin: 0;
@@ -32,14 +32,14 @@
       text-align: left;
       overflow-x: hidden;
       opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInAll 1.8s ease forwards;
+      transform: translatey(20px);
+      animation: fadeinall 1.8s ease forwards;
     }
 
-    @keyframes fadeInAll {
+    @keyframes fadeinall {
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translatey(0);
       }
     }
 
@@ -74,14 +74,14 @@
       font-weight: 800;
       letter-spacing: 0.3px;
       opacity: 0;
-      transform: translateY(40px);
+      transform: translatey(40px);
       transition: opacity 1.2s ease, transform 1.2s ease;
       will-change: opacity, transform;
     }
 
     .quote.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translatey(0);
     }
 
     @media (max-width: 768px) {
@@ -107,42 +107,42 @@
 </head>
 <body>
 
-  <div class="section">Hello. I’m Neol.<br>Seventeen.<br>Not in college yet.<br>Just trying to move different while most people are still asleep to the bigger picture.</div>
+  <div class="section">hello. i’m neol.<br>seventeen.<br>not in college yet.<br>just trying to move different while most people are still asleep to the bigger picture.</div>
 
-  <div class="section">I’m working on my body<br>Not for looks<br>But because it sharpens me<br>Keeps my mind from drifting<br>Makes the mirror feel honest</div>
+  <div class="section">i’m working on my body<br>not for looks<br>but because it sharpens me<br>keeps my mind from drifting<br>makes the mirror feel honest</div>
 
-  <div class="section">My days are mostly quiet<br>Some people think that’s a mystery thing<br>It’s not<br>I just don’t like saying things that don’t matter</div>
+  <div class="section">my days are mostly quiet<br>some people think that’s a mystery thing<br>it’s not<br>i just don’t like saying things that don’t matter</div>
 
-  <div class="section">I’m building something<br>Not rushing it<br>But it’s there<br>In the background, moving<br>One decision at a time</div>
+  <div class="section">i’m building something<br>not rushing it<br>but it’s there<br>in the background, moving<br>one decision at a time</div>
 
-  <div class="section">She’s in the picture too<br>Not loud, not public<br>But steady<br>She gets the version of me no one else really earns</div>
+  <div class="section">she’s in the picture too<br>not loud, not public<br>but steady<br>she gets the version of me no one else really earns</div>
 
   <div class="section">
-    Some things I stand by:<br>
-    – Stop explaining yourself<br>
-    – The right people already get it<br>
-    – Don’t chase aesthetics. Become undeniable through consistency<br>
-    – You don’t need more clothes. Or more opinions. Or more noise<br>
-    – Clarity comes in silence
+    some things i stand by:<br>
+    – stop explaining yourself<br>
+    – the right people already get it<br>
+    – don’t chase aesthetics. become undeniable through consistency<br>
+    – you don’t need more clothes. or more opinions. or more noise<br>
+    – clarity comes in silence
   </div>
 
-  <div class="section">This year’s about refining<br>Cutting the excess<br>Thinking sharper<br>Moving smarter</div>
+  <div class="section">this year’s about refining<br>cutting the excess<br>thinking sharper<br>moving smarter</div>
 
   <div class="section">
-    Monthly Picks:<br>
-    Article – <a href="https://medium.com/@yentqing/i-cannot-be-content-222e6b83b0f1" target="_blank">I Cannot Be Content</a><br>
-    Video – Jiro Dreams of Sushi<br>
-    Album – <a href="https://music.apple.com/us/album/torches/435761204" target="_blank">Foster The People – Torches</a><br>
-    Book – Meditations by Marcus Aurelius<br>
-    Movie – <a href="https://www.primevideo.com/detail/Inside-Llewyn-Davis/0MW3B0FYFVGDFI3DNHOXJ6KA0S" target="_blank">Inside Llewyn Davis</a>
+    monthly picks:<br>
+    article – <a href="https://medium.com/@yentqing/i-cannot-be-content-222e6b83b0f1" target="_blank">i cannot be content</a><br>
+    video – jiro dreams of sushi<br>
+    album – <a href="https://music.apple.com/us/album/torches/435761204" target="_blank">foster the people – torches</a><br>
+    book – meditations by marcus aurelius<br>
+    movie – <a href="https://www.primevideo.com/detail/inside-llewyn-davis/0mw3b0fyfvgdfi3dnhojx6ka0s" target="_blank">inside llewyn davis</a>
   </div>
 
   <div class="quote" id="quote"></div>
 
-  <div class="section">That’s it<br>Might update this again<br>Might not</div>
+  <div class="section">that’s it<br>might update this again<br>might not</div>
 
   <script>
-    const quoteText = "“I don’t need it to be easy, I need it to be worth it.”";
+    const quoteText = "“i don’t need it to be easy, i need it to be worth it.”";
     const quoteEl = document.getElementById("quote");
     let quoteTyped = false;
 
