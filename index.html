@@ -125,9 +125,46 @@
     – You don’t need more clothes. Or more opinions. Or more noise<br>
     – Clarity comes in silence
   </div>
-  
+
   <div class="section">This year’s about refining<br>Cutting the excess<br>Thinking sharper<br>Moving smarter</div>
 
   <div class="section">
     Monthly Picks:<br>
-    Article – <a href="https://medium.com/@yentqing/i-cannot-be-content-222e6b83b0f
+    Article – <a href="https://medium.com/@yentqing/i-cannot-be-content-222e6b83b0f1" target="_blank">I Cannot Be Content</a><br>
+    Video – Jiro Dreams of Sushi<br>
+    Album – <a href="https://music.apple.com/us/album/torches/435761204" target="_blank">Foster The People – Torches</a><br>
+    Book – Meditations by Marcus Aurelius<br>
+    Movie – <a href="https://www.primevideo.com/detail/Inside-Llewyn-Davis/0MW3B0FYFVGDFI3DNHOXJ6KA0S" target="_blank">Inside Llewyn Davis</a>
+  </div>
+
+  <div class="quote" id="quote"></div>
+
+  <div class="section">That’s it<br>Might update this again<br>Might not</div>
+
+  <script>
+    const quoteText = "“I don’t need it to be easy, I need it to be worth it.”";
+    const quoteEl = document.getElementById("quote");
+    let quoteTyped = false;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !quoteTyped && entry.target.id === "quote") {
+          quoteTyped = true;
+          entry.target.classList.add("visible");
+          let idx = 0;
+          function typeQuote() {
+            if (idx < quoteText.length) {
+              quoteEl.textContent += quoteText[idx++];
+              setTimeout(typeQuote, 60);
+            }
+          }
+          typeQuote();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    observer.observe(quoteEl);
+  </script>
+
+</body>
+</html>
