@@ -24,7 +24,7 @@
       font-family: 'DilemmaSansBoldXP', sans-serif;
       font-weight: 900;
       color: #0033ff;
-      font-size: 4.6rem; /* made it BIG like the screenshot */
+      font-size: 3.8rem; /* Adjusted to look big but not crazy */
       letter-spacing: 0.2px;
       line-height: 1.6;
       margin: 0;
@@ -36,7 +36,7 @@
     a {
       color: #0033ff;
       text-decoration: underline;
-      font-size: 4.6rem; /* links also big */
+      font-size: 3.8rem;
       cursor: pointer;
       transition: filter 0.4s ease, color 0.4s ease;
     }
@@ -48,15 +48,8 @@
 
     .section {
       margin-bottom: 100px;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 1.2s ease, transform 1.2s ease;
-      will-change: opacity, transform;
-    }
-
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
+      opacity: 1; /* Instantly visible */
+      transform: translateY(0); /* No animation */
     }
 
     .quote {
@@ -68,29 +61,38 @@
       margin-top: 40px;
       margin-bottom: 100px;
       white-space: pre-wrap;
-      font-size: 3.8rem;
+      font-size: 3.2rem;
       min-height: 100px;
       font-weight: 800;
       letter-spacing: 0.3px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+      will-change: opacity, transform;
+    }
+
+    .quote.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     @media (max-width: 768px) {
       body {
-        font-size: 2.8rem;
+        font-size: 2.4rem;
         padding: 60px 30px;
       }
 
       .quote {
-        font-size: 2.4rem;
-        margin-bottom: 70px;
-      }
-
-      .section {
+        font-size: 2.2rem;
         margin-bottom: 70px;
       }
 
       a {
-        font-size: 2.8rem;
+        font-size: 2.4rem;
+      }
+
+      .section {
+        margin-bottom: 70px;
       }
     }
   </style>
@@ -138,8 +140,9 @@
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting && !quoteTyped) {
+        if (entry.isIntersecting && !quoteTyped && entry.target.id === "quote") {
           quoteTyped = true;
+          entry.target.classList.add("visible");
           let idx = 0;
           function typeQuote() {
             if (idx < quoteText.length) {
@@ -149,17 +152,10 @@
           }
           typeQuote();
         }
-
-        // Fade-in for other sections
-        if (entry.isIntersecting && entry.target.classList.contains("section")) {
-          entry.target.classList.add("visible");
-        }
       });
     }, { threshold: 0.3 });
 
-    document.querySelectorAll('.section, #quote').forEach(el => {
-      observer.observe(el);
-    });
+    observer.observe(quoteEl);
   </script>
 
 </body>
