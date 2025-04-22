@@ -2,16 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>neol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neol</title>
 
   <style>
     @font-face {
-      font-family: 'DilemmaSansBoldXP';
-      src: url('Dilemma-SansBoldXP.woff2') format('woff2'),
-           url('Dilemma-SansBoldXP.woff') format('woff');
-      font-weight: 900;
-      font-style: normal;
+      font-family: 'Dilemma';
+      src: url('Dilemma-SansBoldXP.woff2') format('woff2');
       font-display: swap;
     }
 
@@ -20,143 +17,117 @@
     }
 
     body {
+      margin: 0;
+      font-family: 'Dilemma', sans-serif;
       background-color: #fff;
-      font-family: 'DilemmaSansBoldXP', sans-serif;
-      font-weight: 900;
-      color: #0033ff;
-      font-size: 3.2rem;
-      letter-spacing: 0.4px;
-      line-height: 1.7;
-      margin: 0 auto;
-      padding: 80px 40px;
-      max-width: 880px;
-      text-align: left;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: #0033ff;
-      text-decoration: underline;
-      cursor: pointer;
-      transition: filter 0.4s ease, color 0.4s ease;
-    }
-
-    a:hover {
       color: #000;
-      filter: grayscale(100%) brightness(80%);
     }
 
-    .section {
-      margin-bottom: 80px;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 1.2s ease, transform 1.2s ease;
-      will-change: opacity, transform;
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      text-align: left;
     }
 
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
+    h2, h3, p {
+      margin: 0 0 18px;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: #0044ff;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0044ff;
+    }
+
+    p {
+      font-size: 1rem;
     }
 
     .quote {
+      font-size: 1.4rem;
+      margin: 50px 0 50px;
       font-style: italic;
-      color: #222;
-      border-left: 4px solid #0033ff;
-      border-right: 2px solid #0033ff;
-      padding-left: 20px;
-      margin-top: 40px;
-      margin-bottom: 80px;
-      white-space: pre-wrap;
-      font-size: 2.6rem;
-      min-height: 100px;
-      font-weight: 800;
-      letter-spacing: 0.3px;
+      font-weight: 600;
+      border-left: 4px solid #0044ff;
+      padding-left: 18px;
+      min-height: 70px;
+    }
+
+    .fade {
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .fade.visible {
+      opacity: 1;
     }
 
     @media (max-width: 768px) {
-      body {
-        font-size: 2.2rem;
-        padding: 50px 25px;
+      .container {
+        padding: 20px 16px;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      h3 {
+        font-size: 1rem;
       }
 
       .quote {
-        font-size: 2rem;
-        margin-bottom: 60px;
-      }
-
-      .section {
-        margin-bottom: 60px;
+        font-size: 1.2rem;
       }
     }
   </style>
 </head>
 <body>
+  <div class="container fade" id="main">
+    <p><strong>Movie</strong></p>
+    <h2><u>Inside Llewyn Davis</u></h2>
 
-  <div class="section">Hello. I’m Neol.<br>Seventeen.<br>Not in college yet.<br>Just trying to move different while most people are still asleep to the bigger picture.</div>
+    <div class="quote" id="quote"></div>
 
-  <div class="section">I’m working on my body<br>Not for looks<br>But because it sharpens me<br>Keeps my mind from drifting<br>Makes the mirror feel honest</div>
-
-  <div class="section">My days are mostly quiet<br>Some people think that’s a mystery thing<br>It’s not<br>I just don’t like saying things that don’t matter</div>
-
-  <div class="section">I’m building something<br>Not rushing it<br>But it’s there<br>In the background, moving<br>One decision at a time</div>
-
-  <div class="section">She’s in the picture too<br>Not loud, not public<br>But steady<br>She gets the version of me no one else really earns</div>
-
-  <div class="section">
-    Some things I stand by:<br>
-    – Stop explaining yourself<br>
-    – The right people already get it<br>
-    – Don’t chase aesthetics. Become undeniable through consistency<br>
-    – You don’t need more clothes. Or more opinions. Or more noise<br>
-    – Clarity comes in silence
+    <h2>That’s it</h2>
+    <h3>Might update this again</h3>
+    <h3>Might not</h3>
   </div>
-
-  <div class="section">This year’s about refining<br>Cutting the excess<br>Thinking sharper<br>Moving smarter</div>
-
-  <div class="section">
-    Monthly Picks:<br>
-    Article – <a href="https://medium.com/@yentqing/i-cannot-be-content-222e6b83b0f1" target="_blank">I Cannot Be Content</a><br>
-    Video – Jiro Dreams of Sushi<br>
-    Album – <a href="https://music.apple.com/us/album/torches/435761204" target="_blank">Foster The People – Torches</a><br>
-    Book – Meditations by Marcus Aurelius<br>
-    Movie – <a href="https://www.primevideo.com/detail/Inside-Llewyn-Davis/0MW3B0FYFVGDFI3DNHOXJ6KA0S" target="_blank">Inside Llewyn Davis</a>
-  </div>
-
-  <div class="quote" id="quote"></div>
-
-  <div class="section">That’s it<br>Might update this again<br>Might not</div>
 
   <script>
+    // Fade in everything on load
+    window.addEventListener('load', () => {
+      document.getElementById('main').classList.add('visible');
+    });
+
+    // Typewriter for the quote ONLY when in viewport
     const quoteText = "“I don’t need it to be easy, I need it to be worth it.”";
-    const quoteEl = document.getElementById("quote");
-    let quoteTyped = false;
+    const quoteEl = document.getElementById('quote');
+    let index = 0;
+    let startedTyping = false;
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !quoteTyped) {
-          quoteTyped = true;
-          let idx = 0;
-          function typeQuote() {
-            if (idx < quoteText.length) {
-              quoteEl.textContent += quoteText[idx++];
-              setTimeout(typeQuote, 60);
-            }
-          }
-          typeQuote();
-        }
+      if (entries[0].isIntersecting && !startedTyping) {
+        startedTyping = true;
+        typeWriter();
+      }
+    }, { threshold: 0.6 });
 
-        // Fade-in for other sections
-        if (entry.isIntersecting && entry.target.classList.contains("section")) {
-          entry.target.classList.add("visible");
-        }
-      });
-    }, { threshold: 0.3 });
+    observer.observe(quoteEl);
 
-    document.querySelectorAll('.section, #quote').forEach(el => {
-      observer.observe(el);
-    });
+    function typeWriter() {
+      if (index < quoteText.length) {
+        quoteEl.textContent += quoteText.charAt(index);
+        index++;
+        setTimeout(typeWriter, 50);
+      }
+    }
   </script>
-
 </body>
 </html>
