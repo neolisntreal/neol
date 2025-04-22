@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Neol</title>
+  <title>neol</title>
   <style>
     body {
       background-color: #fff;
@@ -11,12 +11,21 @@
       font-size: 2.8rem;
       line-height: 1.7;
       margin: 0;
-      padding: 80px 120px;
+      padding: 80px 40px;
+      text-align: left;
+      letter-spacing: 0.5px;
     }
 
     a {
       color: #0033ff;
       text-decoration: underline;
+      cursor: pointer;
+      transition: filter 0.4s ease, color 0.4s ease;
+    }
+
+    a:hover {
+      color: #000;
+      filter: grayscale(100%) brightness(80%);
     }
 
     .section {
@@ -29,15 +38,43 @@
       margin-top: 100px;
     }
 
+    .quote {
+      font-style: italic;
+      color: #222;
+      border-left: 4px solid #0033ff;
+      padding-left: 20px;
+      margin-top: 40px;
+    }
+
+    #typewriter {
+      white-space: pre-wrap;
+      border-right: 2px solid #0033ff;
+      animation: blink 0.7s infinite step-end;
+      font-size: 2.8rem;
+      line-height: 1.7;
+      min-height: 200px;
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
     @media (max-width: 768px) {
       body {
         font-size: 2rem;
         padding: 60px 30px;
       }
+
+      #typewriter {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
+
+  <div id="typewriter"></div>
+
   <div class="section">
     Hello. I’m Neol.<br>
     Seventeen.<br>
@@ -100,8 +137,7 @@
     Movie – <a href="https://www.primevideo.com/detail/Inside-Llewyn-Davis/0MW3B0FYFVGDFI3DNHOXJ6KA0S" target="_blank">Inside Llewyn Davis</a>
   </div>
 
-  <div class="section">
-    Quote I keep close:<br><br>
+  <div class="quote">
     “Don’t wait for the perfect moment, take the moment and make it perfect.”
   </div>
 
@@ -114,5 +150,31 @@
   <div class="footer">
     ty 4fsun
   </div>
+
+  <script>
+    const el = document.getElementById("typewriter");
+    const text = "just trying to move differen—different* while most people sleep on the bigger picture.";
+    let i = 0;
+    let delay = 60;
+
+    function type() {
+      if (i < text.length) {
+        if (text[i] === "*") {
+          setTimeout(() => {
+            el.textContent = el.textContent.slice(0, -9);
+            i++;
+            type();
+          }, 400);
+        } else {
+          el.textContent += text[i];
+          i++;
+          setTimeout(type, delay);
+        }
+      }
+    }
+
+    window.onload = () => type();
+  </script>
+
 </body>
 </html>
