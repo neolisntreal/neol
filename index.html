@@ -7,34 +7,30 @@
 
   <style>
     @font-face {
-      font-family: 'DilemmaSansBoldXP';
-      src: url('Dilemma-SansBoldXP.woff2') format('woff2'),
-           url('Dilemma-SansBoldXP.woff') format('woff');
-      font-weight: 900;
-      font-style: normal;
-      font-display: swap;
-    }
+  font-family: 'SuisseIntl';
+  src: url('SuisseIntl-Regular.woff2') format('woff2'),
+       url('SuisseIntl-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background-color: #000;
-      font-family: 'DilemmaSansBoldXP', sans-serif;
-      font-weight: 900;
-      color: #fff;
-      font-size: 3.2rem;
-      letter-spacing: 0.2px;
-      line-height: 1.6;
-      margin: 0;
-      padding: 100px 50px;
-      text-align: left;
-      overflow-x: hidden;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInAll 1.8s ease forwards;
-    }
+body {
+  background-color: #000;
+  font-family: 'SuisseIntl', sans-serif;
+  font-weight: 600; /* Simulate demi-bold */
+  color: #fff;
+  font-size: 3.2rem;
+  letter-spacing: 0.1px; /* Slightly tighter to make it feel heavier */
+  line-height: 1.6;
+  margin: 0;
+  padding: 100px 50px;
+  text-align: left;
+  overflow-x: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInAll 1.8s ease forwards;
+}
 
     @keyframes fadeInAll {
       to {
