@@ -8,8 +8,7 @@
   <style>
     @font-face {
       font-family: 'DilemmaSansBoldXP';
-      src: url('Dilemma-SansBoldXP.woff2') format('woff2'),
-           url('Dilemma-SansBoldXP.woff') format('woff');
+      src: url('Dilemma-SansBoldXP.woff2') format('woff2');
       font-weight: 900;
       font-style: normal;
       font-display: swap;
@@ -91,7 +90,7 @@
 
     #typewriter {
       white-space: nowrap;
-      border-right: 3px solid white;
+      border-right: 4px solid white;
       display: inline-block;
       overflow: hidden;
       vertical-align: bottom;
@@ -167,8 +166,12 @@
 
   <div class="section right">That’s it<br>Might update this again<br>Might not</div>
 
+  <!-- Typewriter Sounds -->
+  <audio id="typeSound" src="https://www.soundjay.com/mechanical/typewriter-key-1.mp3" preload="auto"></audio>
+  <audio id="backspaceSound" src="https://www.soundjay.com/mechanical/typewriter-return-1.mp3" preload="auto"></audio>
+
   <script>
-    // Section fade-in
+    // Section reveal
     const sections = document.querySelectorAll('.section');
     const sectionObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -177,7 +180,6 @@
         }
       });
     }, { threshold: 0.3 });
-
     sections.forEach(section => sectionObserver.observe(section));
 
     // Quote typing
@@ -201,38 +203,47 @@
         }
       });
     }, { threshold: 0.3 });
-
     quoteObserver.observe(quoteEl);
 
-    // Typewriter intro
+    // Typewriter animation with backspace and sound
     const typewriterEl = document.getElementById("typewriter");
     const introEl = document.getElementById("intro");
-    let typedIntro = false;
+    const typeSound = document.getElementById("typeSound");
+    const backspaceSound = document.getElementById("backspaceSound");
+    let typed = false;
 
     const typewriterObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting && !typedIntro && entry.target.id === "intro") {
-          typedIntro = true;
-          let text = "Neol ?";
+        if (entry.isIntersecting && !typed && entry.target.id === "intro") {
+          typed = true;
+          const text = "Neol ?";
           let i = 0;
-          function typeIntro() {
+
+          function typeNext() {
             if (i < text.length) {
               typewriterEl.textContent += text[i++];
-              setTimeout(typeIntro, 100);
+              typeSound.currentTime = 0;
+              typeSound.play();
+              setTimeout(typeNext, 300); // Slow down typing
             } else {
               setTimeout(() => {
-                typewriterEl.textContent = "Neol";
+                // Remove '?'
+                backspaceSound.currentTime = 0;
+                backspaceSound.play();
+                typewriterEl.textContent = typewriterEl.textContent.slice(0, -1);
                 setTimeout(() => {
-                  typewriterEl.textContent = "Neol.";
-                }, 200);
-              }, 500);
+                  typewriterEl.textContent += '.';
+                  typeSound.currentTime = 0;
+                  typeSound.play();
+                }, 400);
+              }, 800);
             }
           }
-          typeIntro();
+
+          typeNext();
         }
       });
     }, { threshold: 0.5 });
-
     typewriterObserver.observe(introEl);
   </script>
 
