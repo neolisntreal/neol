@@ -30,6 +30,27 @@
       margin: 0;
       padding: 100px 0;
       overflow-x: hidden;
+      position: relative;
+    }
+
+    /* grain overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+      opacity: 0.05;
+      z-index: 1;
+    }
+
+    .container {
+      padding: 0 60px;
+      position: relative;
+      z-index: 2;
     }
 
     .section {
@@ -39,15 +60,13 @@
     }
 
     .section.left {
-      transform: translateX(80px);
+      transform: translateX(40px);
       text-align: left;
-      padding-left: 0;
     }
 
     .section.right {
-      transform: translateX(-80px);
+      transform: translateX(-40px);
       text-align: right;
-      padding-right: 0;
     }
 
     .section.visible {
@@ -91,10 +110,32 @@
       transform: translateY(0);
     }
 
+    .typewriter {
+      display: inline-block;
+      overflow: hidden;
+      border-right: 2px solid white;
+      white-space: nowrap;
+      animation: typing 1.2s steps(10, end), blink 0.6s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent }
+      50% { border-color: white }
+    }
+
     @media (max-width: 768px) {
       body {
         font-size: 2.1rem;
         padding: 60px 0;
+      }
+
+      .container {
+        padding: 0 30px;
       }
 
       .quote {
@@ -111,59 +152,79 @@
         margin-bottom: 70px;
         text-align: left !important;
         transform: translateX(0) !important;
-        padding: 0 20px;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="section left">Hello. I’m Neol.<br>Seventeen.<br>Not in college yet.<br>Just trying to stay in lane.</div>
+  <div class="container">
+    <div class="section left" id="introSection">
+      Hello. I’m <span id="neolText"></span><br>
+      Seventeen.<br>
+      Not in college yet.<br>
+      Just trying to stay in lane.
+    </div>
 
-  <div class="section right">I’m working on my body.<br>Not for looks.<br>But because it sharpens me.<br>Keeps my mind from drifting<br>Makes the mirror feel honest</div>
+    <div class="section right">I’m working on my body.<br>Not for looks.<br>But because it sharpens me.<br>Keeps my mind from drifting<br>Makes the mirror feel honest</div>
 
-  <div class="section left">My days are mostly bland.<br>Some people think that’s a mystery thing.<br>It’s not.<br>I'm not silent, probably just selective<br>Like some expensive cheese.</div>
+    <div class="section left">My days are mostly bland.<br>Some people think that’s a mystery thing.<br>It’s not.<br>I'm not silent, probably just selective<br>Like some expensive cheese.</div>
 
-  <div class="section right">I’m building something.<br>Not rushing it<br>But it’s there<br>In the background, moving<br>One decision at a time.</div>
+    <div class="section right">I’m building something.<br>Not rushing it<br>But it’s there<br>In the background, moving<br>One decision at a time.</div>
 
-  <div class="section left">Some people are part of it<br>Not all out in the open<br>Not something you post about<br>She gets the version of me no one else really earns.</div>
+    <div class="section left">Some people are part of it<br>Not all out in the open<br>Not something you post about<br>She gets the version of me no one else really earns.</div>
 
-  <div class="section right">
-    Some things I stand by:<br>
-     stop explaining yourself – <br>
-     the right people already get it – <br>
-     consistency > clout – <br>
-     you don’t need more clothes. Or more – opinions. Or more noise. a few makes up for me atleast. <br>
-    most people just need a nap and a better – plan
+    <div class="section right">
+      Some things I stand by:<br>
+      stop explaining yourself – <br>
+      the right people already get it – <br>
+      consistency > clout – <br>
+      you don’t need more clothes. Or more – opinions. Or more noise. a few makes up for me atleast. <br>
+      most people just need a nap and a better – plan
+    </div>
+
+    <div class="section left">
+      Monthly Picks:<br>
+      Article – <a href="https://medium.com/@yentqing/i-cannot-be-content-222e6b83b0f1" target="_blank">I Cannot Be Content</a><br>
+      Video – Jiro Dreams of Sushi<br>
+      Album – <a href="https://music.apple.com/us/album/torches/435761204" target="_blank">Foster The People – Torches</a><br>
+      Book – Meditations by Marcus Aurelius<br>
+      Movie – <a href="https://www.primevideo.com/detail/Inside-Llewyn-Davis/0MW3B0FYFVGDFI3DNHOXJ6KA0S" target="_blank">Inside Llewyn Davis</a>
+    </div>
+
+    <div class="quote" id="quote"></div>
+
+    <div class="section right">That’s it<br>Might update this again<br>Might not</div>
   </div>
-
-  <div class="section left">
-    Monthly Picks:<br>
-    Article – <a href="https://medium.com/@yentqing/i-cannot-be-content-222e6b83b0f1" target="_blank">I Cannot Be Content</a><br>
-    Video – Jiro Dreams of Sushi<br>
-    Album – <a href="https://music.apple.com/us/album/torches/435761204" target="_blank">Foster The People – Torches</a><br>
-    Book – Meditations by Marcus Aurelius<br>
-    Movie – <a href="https://www.primevideo.com/detail/Inside-Llewyn-Davis/0MW3B0FYFVGDFI3DNHOXJ6KA0S" target="_blank">Inside Llewyn Davis</a>
-  </div>
-
-  <div class="quote" id="quote"></div>
-
-  <div class="section right">That’s it<br>Might update this again<br>Might not</div>
 
   <script>
     const sections = document.querySelectorAll('.section');
-
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+
+          if (entry.target.id === "introSection") {
+            const text = "Neol";
+            const neolSpan = document.getElementById("neolText");
+            neolSpan.innerHTML = '';
+            neolSpan.classList.add("typewriter");
+            let i = 0;
+            const type = () => {
+              if (i < text.length) {
+                neolSpan.innerHTML += text[i];
+                i++;
+                setTimeout(type, 120);
+              }
+            };
+            type();
+          }
         }
       });
     }, { threshold: 0.3 });
 
     sections.forEach(section => sectionObserver.observe(section));
 
-    // QUOTE TYPING THING
     const quoteText = "“forget greatness , just don’t let the world forget you - something  Ra's Al Ghul would say” (not really) ";
     const quoteEl = document.getElementById("quote");
     let quoteTyped = false;
