@@ -52,6 +52,15 @@
       transform: translateX(0);
     }
 
+    #standby {
+      text-align: center;
+      transform: translateX(0) !important;
+    }
+
+    #standby.visible {
+      text-align: center !important;
+    }
+
     a {
       color: #fff;
       text-decoration: underline;
@@ -120,7 +129,7 @@
       .section {
         font-size: 2.1rem;
         margin-bottom: 70px;
-        text-align: left !important;
+        text-align: center !important;
         transform: translateX(0) !important;
         padding: 0;
       }
@@ -144,7 +153,7 @@
 
   <div class="section left">Some people are part of it<br>Not all out in the open<br>Not something you post about<br>She gets the version of me no one else really earns.</div>
 
-  <div class="section right">
+  <div class="section" id="standby">
     Some things I stand by:<br>
      stop explaining yourself – <br>
      the right people already get it – <br>
@@ -154,8 +163,7 @@
      a better plan.
   </div>
 
-  <div class="section left">
-    Monthly Picks:<br>
+  <div class="section left">Monthly Picks:<br>
     Article – <a href="https://medium.com/@yentqing/i-cannot-be-content-222e6b83b0f1" target="_blank">I Cannot Be Content</a><br>
     Video – Jiro Dreams of Sushi<br>
     Song - <a href="https://music.apple.com/us/album/the-plan-from-the-motion-picture-tenet-single/1528769566" target="_blank"> THE PLAN - Travis Scott ( from Tenet )</a><br>
@@ -168,12 +176,10 @@
 
   <div class="section right">That’s it<br>Might update this again<br>Might not</div>
 
-  <!-- Typewriter Sounds -->
   <audio id="typeSound" src="https://www.soundjay.com/mechanical/typewriter-key-1.mp3" preload="auto"></audio>
   <audio id="backspaceSound" src="https://www.soundjay.com/mechanical/typewriter-return-1.mp3" preload="auto"></audio>
 
   <script>
-    // Section reveal
     const sections = document.querySelectorAll('.section');
     const sectionObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -184,7 +190,6 @@
     }, { threshold: 0.3 });
     sections.forEach(section => sectionObserver.observe(section));
 
-    // Quote typing
     const quoteEl = document.getElementById("quote");
     const quoteText = "“forget greatness , just don’t let the world forget you - something  Ra's Al Ghul would say” (not really) ";
     let quoteDone = false;
@@ -207,7 +212,6 @@
     }, { threshold: 0.3 });
     quoteObserver.observe(quoteEl);
 
-    // Typewriter animation with backspace and sound
     const typewriterEl = document.getElementById("typewriter");
     const introEl = document.getElementById("intro");
     const typeSound = document.getElementById("typeSound");
@@ -226,10 +230,9 @@
               typewriterEl.textContent += text[i++];
               typeSound.currentTime = 0;
               typeSound.play();
-              setTimeout(typeNext, 300); // Slow down typing
+              setTimeout(typeNext, 300);
             } else {
               setTimeout(() => {
-                // Remove '?'
                 backspaceSound.currentTime = 0;
                 backspaceSound.play();
                 typewriterEl.textContent = typewriterEl.textContent.slice(0, -1);
@@ -248,6 +251,5 @@
     }, { threshold: 0.5 });
     typewriterObserver.observe(introEl);
   </script>
-
 </body>
 </html>
