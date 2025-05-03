@@ -36,34 +36,22 @@
     .section {
       opacity: 0;
       position: relative;
-      animation: fadeInSlide 1s ease forwards;
+      transition: opacity 1s ease, transform 1s ease;
     }
 
-    /* alternate left-right animations */
-    .section:nth-child(odd) {
+    .section.left {
       transform: translateX(80px);
       text-align: left;
     }
 
-    .section:nth-child(even) {
+    .section.right {
       transform: translateX(-80px);
       text-align: right;
     }
 
-    .section:nth-child(1) { animation-delay: 0.2s; }
-    .section:nth-child(2) { animation-delay: 0.6s; }
-    .section:nth-child(3) { animation-delay: 1.0s; }
-    .section:nth-child(4) { animation-delay: 1.4s; }
-    .section:nth-child(5) { animation-delay: 1.8s; }
-    .section:nth-child(6) { animation-delay: 2.2s; }
-    .section:nth-child(7) { animation-delay: 2.6s; }
-    .section:nth-child(8) { animation-delay: 3.0s; }
-
-    @keyframes fadeInSlide {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
+    .section.visible {
+      opacity: 1;
+      transform: translateX(0);
     }
 
     a {
@@ -128,26 +116,26 @@
 </head>
 <body>
 
-  <div class="section">Hello. I’m Neol.<br>Seventeen.<br>Not in college yet.<br>Just trying to stay in lane.</div>
+  <div class="section left">Hello. I’m Neol.<br>Seventeen.<br>Not in college yet.<br>Just trying to stay in lane.</div>
 
-  <div class="section">I’m working on my body.<br>Not for looks.<br>But because it sharpens me.<br>Keeps my mind from drifting<br>Makes the mirror feel honest</div>
+  <div class="section right">I’m working on my body.<br>Not for looks.<br>But because it sharpens me.<br>Keeps my mind from drifting<br>Makes the mirror feel honest</div>
 
-  <div class="section">My days are mostly bland.<br>Some people think that’s a mystery thing.<br>It’s not.<br>I'm not silent, probably just selective<br>Like some expensive cheese.</div>
+  <div class="section left">My days are mostly bland.<br>Some people think that’s a mystery thing.<br>It’s not.<br>I'm not silent, probably just selective<br>Like some expensive cheese.</div>
 
-  <div class="section">I’m building something.<br>Not rushing it<br>But it’s there<br>In the background, moving<br>One decision at a time.</div>
+  <div class="section right">I’m building something.<br>Not rushing it<br>But it’s there<br>In the background, moving<br>One decision at a time.</div>
 
-  <div class="section">Some people are part of it<br>Not all out in the open<br>Not something you post about<br>She gets the version of me no one else really earns.</div>
+  <div class="section left">Some people are part of it<br>Not all out in the open<br>Not something you post about<br>She gets the version of me no one else really earns.</div>
 
-  <div class="section">
+  <div class="section right">
     Some things I stand by:<br>
-     stop explaining yourself – <br>
-     the right people already get it – <br>
-     consistency > clout – <br>
-     you don’t need more clothes. Or more opinions. Or more noise. a few makes up for me atleast. – <br>
-     most people just need a nap and a better plan –
+     stop explaining yourself ● <br>
+     the right people already get it ● <br>
+     consistency > clout ● <br>
+     you don’t need more clothes. Or more ● opinions. Or more noise. a few makes up for me atleast. <br>
+     most people just need a nap and a better ● plan
   </div>
 
-  <div class="section">
+  <div class="section left">
     Monthly Picks:<br>
     Article – <a href="https://medium.com/@yentqing/i-cannot-be-content-222e6b83b0f1" target="_blank">I Cannot Be Content</a><br>
     Video – Jiro Dreams of Sushi<br>
@@ -158,14 +146,27 @@
 
   <div class="quote" id="quote"></div>
 
-  <div class="section">That’s it<br>Might update this again<br>Might not</div>
+  <div class="section right">That’s it<br>Might update this again<br>Might not</div>
 
   <script>
+    const sections = document.querySelectorAll('.section');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    sections.forEach(section => sectionObserver.observe(section));
+
+    // QUOTE TYPING THING
     const quoteText = "“forget greatness , just don’t let the world forget you - something  Ra's Al Ghul would say” (not really) ";
     const quoteEl = document.getElementById("quote");
     let quoteTyped = false;
 
-    const observer = new IntersectionObserver((entries) => {
+    const quoteObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting && !quoteTyped && entry.target.id === "quote") {
           quoteTyped = true;
@@ -182,7 +183,7 @@
       });
     }, { threshold: 0.3 });
 
-    observer.observe(quoteEl);
+    quoteObserver.observe(quoteEl);
   </script>
 
 </body>
