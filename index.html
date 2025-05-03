@@ -30,26 +30,24 @@
       margin: 0;
       padding: 100px 0;
       overflow-x: hidden;
-      background-image: url('noise.png'); /* subtle noise texture */
-      background-repeat: repeat;
     }
 
     .section {
       opacity: 0;
       position: relative;
       transition: opacity 1s ease, transform 1s ease;
-      padding: 0 50px;
-      margin-bottom: 100px;
     }
 
     .section.left {
       transform: translateX(80px);
       text-align: left;
+      padding-left: 0;
     }
 
     .section.right {
       transform: translateX(-80px);
       text-align: right;
+      padding-right: 0;
     }
 
     .section.visible {
@@ -93,41 +91,6 @@
       transform: translateY(0);
     }
 
-    /* Typewriter effect for "Neol" */
-    .typewriter {
-      overflow: hidden;
-      border-right: .15em solid #fff;
-      white-space: nowrap;
-      margin: 0 auto;
-      letter-spacing: .15em;
-      animation:
-        typing 2s steps(5, end),
-        blink-caret .75s step-end infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 5ch }
-    }
-
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: #fff }
-    }
-
-    /* Horizontal scroll for Monthly Picks */
-    .monthly-picks {
-      display: flex;
-      overflow-x: auto;
-      gap: 50px;
-      padding: 20px 50px;
-    }
-
-    .monthly-picks div {
-      min-width: 300px;
-      flex-shrink: 0;
-    }
-
     @media (max-width: 768px) {
       body {
         font-size: 2.1rem;
@@ -150,26 +113,12 @@
         transform: translateX(0) !important;
         padding: 0 20px;
       }
-
-      .monthly-picks {
-        flex-direction: column;
-        padding: 20px;
-      }
-
-      .monthly-picks div {
-        min-width: auto;
-      }
     }
   </style>
 </head>
 <body>
 
-  <div class="section left">
-    Hello. I’m <span class="typewriter">Neol</span>.<br>
-    Seventeen.<br>
-    Not in college yet.<br>
-    Just trying to stay in lane.
-  </div>
+  <div class="section left">Hello. I’m Neol.<br>Seventeen.<br>Not in college yet.<br>Just trying to stay in lane.</div>
 
   <div class="section right">I’m working on my body.<br>Not for looks.<br>But because it sharpens me.<br>Keeps my mind from drifting<br>Makes the mirror feel honest</div>
 
@@ -189,14 +138,12 @@
   </div>
 
   <div class="section left">
-    Monthly Picks:
-    <div class="monthly-picks">
-      <div>Article – <a href="https://medium.com/@yentqing/i-cannot-be-content-222e6b83b0f1" target="_blank">I Cannot Be Content</a></div>
-      <div>Video – Jiro Dreams of Sushi</div>
-      <div>Album – <a href="https://music.apple.com/us/album/torches/435761204" target="_blank">Foster The People – Torches</a></div>
-      <div>Book – Meditations by Marcus Aurelius</div>
-      <div>Movie – <a href="https://www.primevideo.com/detail/Inside-Llewyn-Davis/0MW3B0FYFVGDFI3DNHOXJ6KA0S" target="_blank">Inside Llewyn Davis</a></div>
-    </div>
+    Monthly Picks:<br>
+    Article – <a href="https://medium.com/@yentqing/i-cannot-be-content-222e6b83b0f1" target="_blank">I Cannot Be Content</a><br>
+    Video – Jiro Dreams of Sushi<br>
+    Album – <a href="https://music.apple.com/us/album/torches/435761204" target="_blank">Foster The People – Torches</a><br>
+    Book – Meditations by Marcus Aurelius<br>
+    Movie – <a href="https://www.primevideo.com/detail/Inside-Llewyn-Davis/0MW3B0FYFVGDFI3DNHOXJ6KA0S" target="_blank">Inside Llewyn Davis</a>
   </div>
 
   <div class="quote" id="quote"></div>
