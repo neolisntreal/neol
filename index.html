@@ -28,7 +28,7 @@
       letter-spacing: 0.2px;
       line-height: 1.6;
       margin: 0;
-      padding: 100px 0;
+      padding: 100px 5vw;
       overflow-x: hidden;
     }
 
@@ -41,13 +41,11 @@
     .section.left {
       transform: translateX(80px);
       text-align: left;
-      padding-left: 0;
     }
 
     .section.right {
       transform: translateX(-80px);
       text-align: right;
-      padding-right: 0;
     }
 
     .section.visible {
@@ -91,10 +89,24 @@
       transform: translateY(0);
     }
 
+    #typewriter {
+      white-space: nowrap;
+      border-right: 3px solid white;
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: bottom;
+      animation: blink-caret 0.8s step-end infinite;
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: white; }
+    }
+
     @media (max-width: 768px) {
       body {
         font-size: 2.1rem;
-        padding: 60px 0;
+        padding: 60px 5vw;
       }
 
       .quote {
@@ -111,14 +123,19 @@
         margin-bottom: 70px;
         text-align: left !important;
         transform: translateX(0) !important;
-        padding: 0 20px;
+        padding: 0;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="section left">Hello. I’m Neol.<br>Seventeen.<br>Not in college yet.<br>Just trying to stay in lane.</div>
+  <div class="section left" id="intro">
+    Hello. I’m <span id="typewriter"></span><br>
+    Seventeen.<br>
+    Not in college yet.<br>
+    Just trying to stay in lane.
+  </div>
 
   <div class="section right">I’m working on my body.<br>Not for looks.<br>But because it sharpens me.<br>Keeps my mind from drifting<br>Makes the mirror feel honest</div>
 
@@ -151,9 +168,9 @@
   <div class="section right">That’s it<br>Might update this again<br>Might not</div>
 
   <script>
+    // Section fade-in
     const sections = document.querySelectorAll('.section');
-
-    const sectionObserver = new IntersectionObserver((entries) => {
+    const sectionObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
@@ -163,15 +180,15 @@
 
     sections.forEach(section => sectionObserver.observe(section));
 
-    // QUOTE TYPING THING
-    const quoteText = "“forget greatness , just don’t let the world forget you - something  Ra's Al Ghul would say” (not really) ";
+    // Quote typing
     const quoteEl = document.getElementById("quote");
-    let quoteTyped = false;
+    const quoteText = "“forget greatness , just don’t let the world forget you - something  Ra's Al Ghul would say” (not really) ";
+    let quoteDone = false;
 
-    const quoteObserver = new IntersectionObserver((entries) => {
+    const quoteObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting && !quoteTyped && entry.target.id === "quote") {
-          quoteTyped = true;
+        if (entry.isIntersecting && !quoteDone && entry.target.id === "quote") {
+          quoteDone = true;
           entry.target.classList.add("visible");
           let idx = 0;
           function typeQuote() {
@@ -186,6 +203,37 @@
     }, { threshold: 0.3 });
 
     quoteObserver.observe(quoteEl);
+
+    // Typewriter intro
+    const typewriterEl = document.getElementById("typewriter");
+    const introEl = document.getElementById("intro");
+    let typedIntro = false;
+
+    const typewriterObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !typedIntro && entry.target.id === "intro") {
+          typedIntro = true;
+          let text = "Neol ?";
+          let i = 0;
+          function typeIntro() {
+            if (i < text.length) {
+              typewriterEl.textContent += text[i++];
+              setTimeout(typeIntro, 100);
+            } else {
+              setTimeout(() => {
+                typewriterEl.textContent = "Neol";
+                setTimeout(() => {
+                  typewriterEl.textContent = "Neol.";
+                }, 200);
+              }, 500);
+            }
+          }
+          typeIntro();
+        }
+      });
+    }, { threshold: 0.5 });
+
+    typewriterObserver.observe(introEl);
   </script>
 
 </body>
