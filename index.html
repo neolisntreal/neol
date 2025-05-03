@@ -35,24 +35,31 @@
 
     .section {
       opacity: 0;
-      transform: translateX(100px);
-      animation: fadeInRight 1s ease forwards;
-      margin-bottom: 100px;
+      position: relative;
+      animation: fadeInSlide 1s ease forwards;
     }
 
-    .section.fade-left {
-      transform: translateX(-100px);
-      animation: fadeInLeft 1s ease forwards;
+    /* alternate left-right animations */
+    .section:nth-child(odd) {
+      transform: translateX(80px);
+      text-align: left;
     }
 
-    @keyframes fadeInRight {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
+    .section:nth-child(even) {
+      transform: translateX(-80px);
+      text-align: right;
     }
 
-    @keyframes fadeInLeft {
+    .section:nth-child(1) { animation-delay: 0.2s; }
+    .section:nth-child(2) { animation-delay: 0.6s; }
+    .section:nth-child(3) { animation-delay: 1.0s; }
+    .section:nth-child(4) { animation-delay: 1.4s; }
+    .section:nth-child(5) { animation-delay: 1.8s; }
+    .section:nth-child(6) { animation-delay: 2.2s; }
+    .section:nth-child(7) { animation-delay: 2.6s; }
+    .section:nth-child(8) { animation-delay: 3.0s; }
+
+    @keyframes fadeInSlide {
       to {
         opacity: 1;
         transform: translateX(0);
@@ -111,7 +118,10 @@
       }
 
       .section {
+        font-size: 2.1rem;
         margin-bottom: 70px;
+        text-align: left !important;
+        transform: translateX(0) !important;
       }
     }
   </style>
@@ -151,18 +161,6 @@
   <div class="section">That’s it<br>Might update this again<br>Might not</div>
 
   <script>
-    // Assign alternate left/right fade classes and delay animations
-    const sections = document.querySelectorAll(".section");
-    sections.forEach((section, index) => {
-      const delay = index * 300; // 300ms between each
-      section.style.animationDelay = `${delay}ms`;
-
-      if (index % 2 === 1) {
-        section.classList.add("fade-left");
-      }
-    });
-
-    // Quote typewriter effect on viewport enter
     const quoteText = "“forget greatness , just don’t let the world forget you - something  Ra's Al Ghul would say(not really)”";
     const quoteEl = document.getElementById("quote");
     let quoteTyped = false;
