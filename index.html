@@ -114,56 +114,11 @@
         padding: 0 20px;
       }
     }
-
-    /* Add the noise effect */
-    .noise {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      background-image: url('noise.svg');
-      animation: noise-animation 1s infinite linear;
-      z-index: 999;
-    }
-
-    /* Typewriter effect */
-    .typewriter {
-      display: inline-block;
-      border-right: 4px solid #fff;
-      padding-right: 5px;
-      white-space: nowrap;
-      overflow: hidden;
-      font-family: 'DilemmaSansBoldXP', sans-serif;
-      font-weight: 900;
-      letter-spacing: 0.2px;
-      animation: typing 4s steps(30) 1s 1 normal both, blink 0.75s step-end infinite;
-    }
-
-    /* Typing animation */
-    @keyframes typing {
-      from {
-        width: 0;
-      }
-      to {
-        width: 100%;
-      }
-    }
-
-    /* Blinking cursor effect */
-    @keyframes blink {
-      50% {
-        border-color: transparent;
-      }
-    }
   </style>
 </head>
 <body>
 
-  <div class="noise"></div>
-
-  <div class="section left"><span class="typewriter" id="typewriter">Hello. I'm Neol?</span></div>
+  <div class="section left">Hello. I’m Neol.<br>Seventeen.<br>Not in college yet.<br>Just trying to stay in lane.</div>
 
   <div class="section right">I’m working on my body.<br>Not for looks.<br>But because it sharpens me.<br>Keeps my mind from drifting<br>Makes the mirror feel honest</div>
 
